@@ -39,7 +39,7 @@ function onTimerBtnClick() {
 
     const timer = convertMs(delta);
     renderTime(timer);
-  }, 1000);
+  }, 0);
 }
 
 function convertMs(ms) {
