@@ -1,6 +1,8 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 const startBtn = document.querySelector('[data-start]');
 const daysRef = document.querySelector('[data-days]');
 const hoursRef = document.querySelector('[data-hours]');
@@ -19,7 +21,7 @@ const fp = flatpickr(inputRef, {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] <= Date.now()) {
-      return window.alert('Please choose a date in the future');
+      return Notify.failure('Please choose a date in the future');
     }
     isActiveStartBtn();
   },
@@ -64,10 +66,10 @@ function convertMs(ms) {
 }
 
 function renderTime({ days, hours, minutes, seconds }) {
-  daysRef.innerText = days;
-  hoursRef.innerText = hours;
-  minutesRef.innerText = minutes;
-  secondsRef.innerText = seconds;
+  daysRef.textContent = days;
+  hoursRef.textContent = hours;
+  minutesRef.textContent = minutes;
+  secondsRef.textContent = seconds;
 }
 
 function addLeadingZero(value) {
