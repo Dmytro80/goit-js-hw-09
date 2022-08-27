@@ -21,7 +21,9 @@ const fp = flatpickr(inputRef, {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] <= Date.now()) {
-      return Notify.failure('Please choose a date in the future');
+      return Notify.failure('Please choose a date in the future', {
+        clickToClose: true,
+      });
     }
     isActiveStartBtn();
   },
